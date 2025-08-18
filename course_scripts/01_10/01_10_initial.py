@@ -1,3 +1,9 @@
+import faker
+import requests
+
+base_url = ""
+
+fake = faker.Faker()
 # Second gig close to the notification window
 
 
