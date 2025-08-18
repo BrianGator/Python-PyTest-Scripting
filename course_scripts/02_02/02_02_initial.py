@@ -1,5 +1,7 @@
 from playwright.sync_api import Playwright, sync_playwright
 
+url = "your url here"
+
 
 def run(playwright: Playwright):
     firefox = playwright.firefox
