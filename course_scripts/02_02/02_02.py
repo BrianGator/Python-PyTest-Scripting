@@ -8,10 +8,10 @@ def run(playwright: Playwright):
     url = "http://localhost:4001"
 
     page.goto(url)
+    page.get_by_role("button", name="Continue", exact=True).click()
     page.get_by_role("link", name=" Gigs").click()
     page.pause()
     page.go_back()
-    # page.get_by_role("button", name="Add a Gig").click()
     page.pause()
     browser.close()
 
