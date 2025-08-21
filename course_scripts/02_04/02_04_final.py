@@ -1,7 +1,7 @@
 import requests
 from playwright.sync_api import Page, Playwright, sync_playwright
 
-base_url = "http://localhost:4001"
+base_url = "<your url here>"
 
 
 def create_venue():
@@ -14,7 +14,7 @@ def create_venue():
         "capacity": 100,
         "notes": "Great venue!",
     }
-    requests.post(f"{base_url}/api/venues", json=venue_data)
+    response = requests.post(f"{base_url}/api/venues", json=venue_data)
 
 
 def open_gig_form(page: Page):
@@ -26,9 +26,8 @@ def run(playwright: Playwright):
     firefox = playwright.firefox
     browser = firefox.launch(headless=False)
     page = browser.new_page()
-    url = "http://localhost:4001"
 
-    page.goto(url)
+    page.goto(base_url)
     open_gig_form(page)
 
     page.pause()
@@ -37,7 +36,7 @@ def run(playwright: Playwright):
         create_venue()
         page.get_by_role("button", name="Cancel").click()
         open_gig_form(page)
-        page.get_by_label("Venue").select_option(f"{i+1}")
+        page.get_by_label("Venue").select_option(f"{i + 1}")
         page.pause()
     browser.close()
 
