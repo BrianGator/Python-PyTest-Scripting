@@ -7,8 +7,6 @@ def run(playwright: Playwright):
     firefox = playwright.firefox
     browser = firefox.launch(headless=False)
     page = browser.new_page()
-    url = "http://localhost:4001"
-
     page.goto(url)
     page.pause()
     browser.close()
